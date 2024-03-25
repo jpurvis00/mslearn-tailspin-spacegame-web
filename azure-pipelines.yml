@@ -32,7 +32,7 @@ steps:
     verbose: false
 
 - script: 
-    dir /q /t $(System.DefaultWorkingDirectory)
+    ls -al $(System.DefaultWorkingDirectory)
   displayName: 'content after npm install'
 
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
