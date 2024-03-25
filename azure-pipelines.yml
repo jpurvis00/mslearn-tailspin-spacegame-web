@@ -35,11 +35,29 @@ steps:
     ls -al $(System.DefaultWorkingDirectory)
   displayName: 'content after npm install'
 
+- script: 
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+  displayName: 'content before sass'
+
 - script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
   displayName: 'Compile Sass assets'
 
+- script: 
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+  displayName: 'content after sass'
+
+- script: 
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/js/
+  displayName: 'content before gulp'
+
 - task: gulp@1
   displayName: 'Run gulp tasks'
+
+- script: 
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+    ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/js/
+  displayName: 'content after gulp'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
