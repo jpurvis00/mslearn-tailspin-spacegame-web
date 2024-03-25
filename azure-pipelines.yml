@@ -48,16 +48,22 @@ steps:
 
 - script: 
     ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+  displayName: 'content before gulp css'
+
+- script: 
     ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/js/
-  displayName: 'content before gulp'
+  displayName: 'content before gulp js'
 
 - task: gulp@1
   displayName: 'Run gulp tasks'
 
 - script: 
     ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/css/
+  displayName: 'content after gulp css'
+
+- script: 
     ls -al $(System.DefaultWorkingDirectory)/Tailspin.SpaceGame.Web/wwwroot/js/
-  displayName: 'content after gulp'
+  displayName: 'content after gulp js'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
