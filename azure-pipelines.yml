@@ -32,7 +32,7 @@ steps:
     verbose: false
 
 - script: 
-    ls -al $(System.DefaultWorkingDirectory)
+    ls -al $(System.DefaultWorkingDirectory)/node_modules/
   displayName: 'content after npm install'
 
 - script: 
